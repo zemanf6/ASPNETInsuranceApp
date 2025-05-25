@@ -38,6 +38,7 @@ namespace InsuranceApp.Presentation.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(InsuredPersonFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -59,6 +60,7 @@ namespace InsuranceApp.Presentation.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(InsuredPersonFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -79,6 +81,7 @@ namespace InsuranceApp.Presentation.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _manager.DeleteAsync(id);

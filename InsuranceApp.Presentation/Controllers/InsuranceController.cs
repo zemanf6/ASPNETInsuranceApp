@@ -48,6 +48,7 @@ namespace InsuranceApp.Presentation.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(InsuranceFormViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -74,6 +75,7 @@ namespace InsuranceApp.Presentation.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(InsuranceFormViewModel viewModel)
         {
             if (!ModelState.IsValid) 
@@ -98,6 +100,7 @@ namespace InsuranceApp.Presentation.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var dto = await _manager.GetByIdAsync(id);
