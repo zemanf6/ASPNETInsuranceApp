@@ -1,0 +1,29 @@
+﻿@model InsuranceApp.Application.DTOs.InsuranceDto
+@{
+    ViewData["Title"] = "Detail pojištění";
+}
+
+<h3 class="mb-4">Detail pojištění</h3>
+
+<dl class="row">
+    <dt class="col-sm-3">Pojištěnec:</dt>
+    <dd class="col-sm-9">@Model.InsuredPersonFullName</dd>
+
+    <dt class="col-sm-3">Typ pojištění:</dt>
+    <dd class="col-sm-9">@Model.InsuranceType</dd>
+
+    <dt class="col-sm-3">Předmět:</dt>
+    <dd class="col-sm-9">@Model.Subject</dd>
+
+    <dt class="col-sm-3">Částka:</dt>
+    <dd class="col-sm-9">@Model.Amount Kč</dd>
+
+    <dt class="col-sm-3">Platnost:</dt>
+    <dd class="col-sm-9">@Model.ValidFrom.ToShortDateString() – @Model.ValidTo.ToShortDateString()</dd>
+</dl>
+
+<div class="d-flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Editovat</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Odstranit</a>
+    <a asp-controller="InsuredPerson" asp-action="Details" asp-route-id="@Model.InsuredPersonId" class="btn btn-secondary">Zpět na pojištěnce</a>
+</div>

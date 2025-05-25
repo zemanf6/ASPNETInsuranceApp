@@ -1,0 +1,41 @@
+﻿@model IEnumerable<InsuranceApp.Application.DTOs.InsuranceDto>
+@{
+    ViewData["Title"] = "Seznam pojištění";
+}
+
+<h2 class="mb-4 text-center">Pojištění</h2>
+
+<table class="table table-bordered align-middle text-center">
+    <thead class="table-light">
+        <tr>
+            <th>Pojištěnec</th>
+            <th>Typ</th>
+            <th>Předmět</th>
+            <th>Částka</th>
+            <th>Platnost</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model)
+        {
+            <tr>
+                <td>@i.InsuredPersonFullName</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@i.Id">
+                        @i.InsuranceType
+                    </a>
+                </td>
+                <td>@i.Subject</td>
+                <td>@i.Amount Kč</td>
+                <td>@i.ValidFrom.ToShortDateString() – @i.ValidTo.ToShortDateString()</td>
+                <td>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a asp-action="Edit" asp-route-id="@i.Id" class="btn btn-sm btn-warning">Editovat</a>
+                        <a asp-action="Delete" asp-route-id="@i.Id" class="btn btn-sm btn-danger">Odstranit</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

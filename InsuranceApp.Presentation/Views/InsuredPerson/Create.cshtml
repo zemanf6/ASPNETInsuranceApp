@@ -1,0 +1,7 @@
+﻿@model InsuranceApp.Presentation.ViewModels.InsuredPersonFormViewModel
+@{
+    ViewData["Title"] = "Nový pojištěnec";
+}
+
+<h2>Nový pojištěnec</h2>
+@await Html.PartialAsync("_InsuredPersonForm", Model)

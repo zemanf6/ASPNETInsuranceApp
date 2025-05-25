@@ -1,0 +1,13 @@
+﻿@model InsuranceApp.Application.DTOs.InsuranceDto
+@{
+    ViewData["Title"] = "Odstranit pojištění";
+}
+
+<h2>Opravdu chcete odstranit pojištění typu "@Model.InsuranceType"?</h2>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="InsuredPersonId" />
+    <button type="submit" class="btn btn-danger">Ano, odstranit</button>
+    <a asp-controller="InsuredPerson" asp-action="Details" asp-route-id="@Model.InsuredPersonId" class="btn btn-secondary">Zrušit</a>
+</form>

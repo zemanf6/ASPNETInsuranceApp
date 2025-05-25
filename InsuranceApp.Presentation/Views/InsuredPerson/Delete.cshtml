@@ -1,0 +1,12 @@
+﻿@model InsuranceApp.Application.DTOs.InsuredPersonDto
+@{
+    ViewData["Title"] = "Odstranit pojištěnce";
+}
+
+<h2>Opravdu chcete odstranit pojištěnce "@Model.FirstName @Model.LastName"?</h2>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Ano, odstranit</button>
+    <a asp-action="Index" class="btn btn-secondary">Zrušit</a>
+</form>

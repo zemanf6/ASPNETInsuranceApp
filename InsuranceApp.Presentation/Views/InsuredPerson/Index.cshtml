@@ -1,0 +1,52 @@
+﻿@model IEnumerable<InsuranceApp.Application.DTOs.InsuredPersonDto>
+
+@{
+    ViewData["Title"] = "Pojištěnci";
+}
+
+<h2 class="mb-4 text-center">Pojištěnci</h2>
+
+<div class="text-center mb-3">
+    <a asp-action="Create" class="btn btn-primary">
+        Nový pojištěnec
+    </a>
+</div>
+
+<table class="table table-bordered align-middle text-center">
+    <thead class="table-light">
+        <tr>
+            <th>Jméno</th>
+            <th>Bydliště</th>
+            <th style="width: 180px;">Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Details" asp-route-id="@person.Id" class="text-decoration-none">
+                        @person.FirstName @person.LastName
+                    </a>
+                </td>
+                <td>@person.Street, @person.City @person.PostalCode</td>
+                <td>
+                    <div class="d-flex justify-content-center gap-2">
+                        <a asp-action="Edit"
+                           asp-route-id="@person.Id"
+                           class="btn btn-sm btn-warning"
+                           title="Upravit pojištěnce">
+                           Upravit
+                        </a>
+                        <a asp-action="Delete"
+                           asp-route-id="@person.Id"
+                           class="btn btn-sm btn-danger"
+                           title="Odstranit pojištěnce">
+                           Smazat
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
